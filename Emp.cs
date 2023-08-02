@@ -204,15 +204,15 @@ namespace PetShop
                 try
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("update EmployeeTbl set (EmpName=@EN,EmpAddress=@EA,EmpDOB=@ED,EmpPhone=@EP,EmpPass=@EPa where EmpNum=@Ekey", conn);
+                    SqlCommand cmd = new SqlCommand("update EmployeeTbl set EmpName = @EN,EmpAddress = @EA,EmpDOB = @ED,EmpPhone = @EP,EmpPass = @EPa where EmpNum = @EKey", conn);
                     cmd.Parameters.AddWithValue("@EN", EmpNameTb.Text);
                     cmd.Parameters.AddWithValue("@EA", EmpAddTb.Text);
                     cmd.Parameters.AddWithValue("@ED", EmpDOBTb.Value.Date);
                     cmd.Parameters.AddWithValue("@EP", EmpPhoneTb.Text);
                     cmd.Parameters.AddWithValue("@EPa", EmpPasswordTb.Text);
-                    cmd.Parameters.AddWithValue("@Ekey",key);
+                    cmd.Parameters.AddWithValue("@EKey", key);
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("Empolyee Update!!!");
+                    MessageBox.Show("Employee updated Successfully where id = " + key.ToString());
                 }
                 catch (Exception Ex)
                 {
@@ -244,12 +244,12 @@ namespace PetShop
                 try
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("delete from EmployeeTbl where EmpNum = @Empkey", conn);
-                    cmd.Parameters.AddWithValue("@Empkey", key);
-                   
+                    SqlCommand cmd = new SqlCommand("delete from EmployeeTbl where EmpNum = @EKey", conn);
+                    cmd.Parameters.AddWithValue("@EKey", key);
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("Empolyee Deleted!!!");
+                    MessageBox.Show("Employee id = " + key.ToString() + " has been deleted !");
                 }
+
                 catch (Exception Ex)
                 {
                     MessageBox.Show(Ex.Message);
